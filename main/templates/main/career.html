@@ -37,7 +37,7 @@
         <a href="{% url 'blog' %}">Blog</a>
         <a href="{% url 'contact' %}">Contact</a>  
       </nav>
-      <a href="{% url 'form' %}" class="bg-gradient-to-r from-purple-600 to-red-800 hover:from-red-700 hover:to-red-900 text-white font-semibold rounded-full text-sm py-2 px-5 shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300 ease-in-out">
+      <a href="{% url 'signup' %}" class="bg-gradient-to-r from-purple-600 to-red-800 hover:from-red-700 hover:to-red-900 text-white font-semibold rounded-full text-sm py-2 px-5 shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300 ease-in-out">
           Drive with Company
       </a>
       <div class="md:hidden">
@@ -93,7 +93,7 @@
           <span class="text-sm bg-green-100 text-green-800 px-3 py-1 rounded-full">{{ job.type }}</span>
         </div>
         <p class="mb-4 text-sm text-gray-600">{{ job.description }}</p>
-        <a href="{% url 'form' %}" class="inline-block bg-red-700 hover:bg-red-800 text-white text-sm px-4 py-2 rounded-md transition">Apply Now</a>
+        <a href="{% url 'signup' %}" class="inline-block bg-red-700 hover:bg-red-800 text-white text-sm px-4 py-2 rounded-md transition">Apply Now</a>
       </div>
       {% endfor %}
     </div>

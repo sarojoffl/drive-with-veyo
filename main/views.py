@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
 from .models import Job, Blog, ContactMessage, TeamMember
-from .forms import ContactForm
+from .forms import ContactForm, DriverForm
 
 def index(request):
     blogs = Blog.objects.all()
@@ -43,8 +43,16 @@ def contact(request):
         form = ContactForm()
     return render(request, 'main/contact.html', {'form': form})
 
-def form(request):
+def signup_driver(request):
     if request.method == 'POST':
-        # Handle form submission
-        pass
-    return render(request, 'main/form.html')
+        form = DriverForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('signup_success')
+    else:
+        form = DriverForm()
+
+    return render(request, 'main/signup.html', {'form': form})
+
+def signup_success(request):
+    return render(request, 'main/signup_success.html')

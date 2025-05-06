@@ -11,5 +11,6 @@ urlpatterns = [
     path('blog/', views.blog, name='blog'),
     path('blog/<int:id>/', views.blog_details, name='blog_details'),
     path('contact/', views.contact, name='contact'),
-    path('form/', views.form, name='form'),
+    path('signup/', views.signup_driver, name='signup'),
+    path('signup/success/', views.signup_success, name='signup_success'),
 ]
