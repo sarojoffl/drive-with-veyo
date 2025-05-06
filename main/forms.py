@@ -14,7 +14,7 @@ class ContactForm(forms.ModelForm):
 class UserForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'email', 'phone', 'password', 'zip_code', 'referral_code']
+        fields = ['first_name', 'last_name', 'username', 'email', 'phone', 'password', 'zip_code', 'referral_code']
         widgets = {
             'password': forms.PasswordInput(),
         }
