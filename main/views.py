@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
 from .models import Job, Blog, ContactMessage, TeamMember
 from .forms import ContactForm, UserForm
+from django.core.paginator import Paginator
 
 def index(request):
     blogs = Blog.objects.order_by('-created_at')[:3]
@@ -22,8 +23,14 @@ def career(request):
     return render(request, 'main/career.html', {'jobs': jobs})
 
 def blog(request):
-     blogs = Blog.objects.all().order_by('-created_at')
-     return render(request, 'main/blog.html', {'blogs': blogs})
+    blogs = Blog.objects.all().order_by('-created_at')
+
+    # Set up pagination: 6 blogs per page
+    paginator = Paginator(blogs, 6)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'main/blog.html', {'page_obj': page_obj})
 
 def blog_details(request, id):
     blog = get_object_or_404(Blog, id=id)

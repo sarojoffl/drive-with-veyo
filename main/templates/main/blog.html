@@ -12,7 +12,7 @@
 
       <!-- Blog Grid -->
       <div class="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {% for blog in blogs %}
+        {% for blog in page_obj %}
         <div data-aos="fade-up" data-aos-delay="100" class="bg-white rounded-xl shadow-md hover:shadow-lg transition overflow-hidden">
           <img src="{{ blog.image.url }}" alt="{{ blog.title }}" class="w-full h-48 object-cover">
           <div class="p-5">
@@ -27,6 +27,27 @@
         </div>
         {% endfor %}
       </div>
+
+      <!-- Pagination -->
+      {% if page_obj.has_other_pages %}
+      <div class="flex justify-center mt-8">
+        <nav>
+          <ul class="flex space-x-4">
+            {% if page_obj.has_previous %}
+              <li><a href="?page=1" class="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded">First</a></li>
+              <li><a href="?page={{ page_obj.previous_page_number }}" class="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded">Previous</a></li>
+            {% endif %}
+            
+            <li><span class="px-4 py-2 bg-gray-200 rounded">{{ page_obj.number }}</span></li>
+            
+            {% if page_obj.has_next %}
+              <li><a href="?page={{ page_obj.next_page_number }}" class="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded">Next</a></li>
+              <li><a href="?page={{ page_obj.paginator.num_pages }}" class="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded">Last</a></li>
+            {% endif %}
+          </ul>
+        </nav>
+      </div>
+      {% endif %}
     </section>
   </main>
 {% endblock %}
