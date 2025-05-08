@@ -50,11 +50,20 @@ def contact(request):
             form.save()
             context['success'] = True
         else:
-            context['error'] = True
-        return render(request, 'main/contact.html', context)
+            # Check if the error is related to reCAPTCHA
+            captcha_errors = form.errors.get('captcha')
+            if captcha_errors:
+                error_text = str(captcha_errors[0])
+                if 'This field is required' in error_text:
+                    context['error'] = "Please complete the reCAPTCHA."
+                else:
+                    context['error'] = "Invalid reCAPTCHA. Please try again."
+            else:
+                context['error'] = "There was an error with your submission. Please check the form."
     else:
         context['form'] = ContactForm()
-        return render(request, 'main/contact.html', context)
+
+    return render(request, 'main/contact.html', context)
 
 def signup(request):
     if request.method == 'POST':
