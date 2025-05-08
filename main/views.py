@@ -4,7 +4,7 @@ from .models import Job, Blog, ContactMessage, TeamMember
 from .forms import ContactForm, UserForm
 
 def index(request):
-    blogs = Blog.objects.all()
+    blogs = Blog.objects.order_by('-created_at')[:3]
     return render(request, 'main/index.html', {'blogs': blogs})
 
 def about(request):
