@@ -5,44 +5,44 @@
 
 {% block content %}
 
-  <!-- Main Content -->
-  <main data-aos="fade-up" data-aos-duration="2000">
+<!-- Main Content -->
+<main data-aos="fade-up" data-aos-duration="2000">
 
-    <!-- Team Section -->
-    <section id="team" class="py-20 bg-gradient-to-br bg-gray-50">
-      <div class="text-center mb-16 px-4" data-aos="fade-up">
-        <h2 class="text-4xl font-extrabold text-gray-800 mb-4">Our Team</h2>
-        <p class="text-lg text-gray-600 max-w-xl mx-auto">Meet our creative and professional team members who drive success.</p>
-      </div>
+  <!-- Team Section -->
+  <section id="team" class="py-20 bg-gradient-to-br bg-gray-50">
+    <div class="text-center mb-16 px-4" data-aos="fade-up">
+      <h2 class="text-4xl font-extrabold text-gray-800 mb-4">Our Team</h2>
+      <p class="text-lg text-gray-600 max-w-xl mx-auto">Meet our creative and professional team members who drive success.</p>
+    </div>
 
-      <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
-          <!-- Team Members -->
-          {% for member in team_members %}
-          <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 text-center" data-aos="zoom-in" data-aos-delay="0">
-            <img src="{{ member.image.url }}" alt="{{ member.name }}" class="w-40 h-40 rounded-full mx-auto mb-6 object-cover ring-4 ring-blue-100 shadow-md">
-            <h3 class="text-2xl font-semibold text-gray-800 mb-1">{{ member.name }}</h3>
-            <p class="text-sm text-blue-500 font-medium">{{ member.position }}</p>
-            <p class="text-sm text-gray-600 mt-2">{{ member.bio }}</p>
-          </div>
-          {% endfor %}
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+        <!-- Team Members -->
+        {% for member in team_members %}
+        <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 text-center" data-aos="zoom-in" data-aos-delay="{{ forloop.counter0|add:100 }}">
+          <img src="{{ member.image.url }}" alt="Photo of {{ member.name }}, {{ member.position }}" class="w-40 h-40 rounded-full mx-auto mb-6 object-cover ring-4 ring-blue-100 shadow-md">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-1">{{ member.name }}</h3>
+          <p class="text-sm text-blue-500 font-medium">{{ member.position }}</p>
+          <p class="text-sm text-gray-600 mt-2">{{ member.bio }}</p>
         </div>
+        {% endfor %}
       </div>
-    </section>
-  </main>
-  {% endblock %}
+    </div>
+  </section>
+</main>
+{% endblock %}
 
-  {% block extra_js %}
+{% block extra_js %}
 
-  <!-- AOS JS -->
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init();
+<!-- AOS JS -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
 
-    // Mobile Menu Toggle
-    document.getElementById("mobile-menu-btn").addEventListener("click", function () {
-      const mobileMenu = document.getElementById("mobile-menu");
-      mobileMenu.classList.toggle("hidden");
-    });
-  </script>
-  {% endblock %}
+  // Mobile Menu Toggle
+  document.getElementById("mobile-menu-btn").addEventListener("click", function () {
+    const mobileMenu = document.getElementById("mobile-menu");
+    mobileMenu.classList.toggle("hidden");
+  });
+</script>
+{% endblock %}

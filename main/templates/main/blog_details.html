@@ -8,10 +8,11 @@
   <main class="max-w-7xl mx-auto px-4 py-16 bg-blue-50 flex flex-col lg:flex-row gap-8">
     <!-- Blog Detail -->
     <div class="flex-1 bg-white shadow-md rounded-xl p-8">
+      <h1 class="text-3xl font-bold text-gray-800 mb-4 truncate">{{ blog.title }}</h1>
+      <p class="text-sm text-gray-500 mb-4">{{ blog.description }}</p>
       {% if blog.image %}
-        <img src="{{ blog.image.url }}" class="w-full h-64 object-cover rounded-md mb-6" alt="Blog Image" />
+        <img src="{{ blog.image.url }}" class="w-full object-cover rounded-md mb-6" style="min-height: 20rem; height: auto;" alt="Blog Image" />
       {% endif %}
-      <h1 class="text-3xl font-bold text-gray-800 mb-4">{{ blog.title }}</h1>
       <p class="text-sm text-gray-500 mb-6">Published on {{ blog.created_at }} · by {{ blog.author }}</p>
 
       <div class="text-gray-700 leading-relaxed space-y-4">
@@ -35,4 +36,4 @@
     </div>
   </main>
 
-  {% endblock %}
+{% endblock %}

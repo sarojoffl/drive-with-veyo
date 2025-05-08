@@ -41,7 +41,7 @@
         <h3 class="text-xl font-bold">{{ job.title }}</h3>
         <span class="text-sm bg-green-100 text-green-800 px-3 py-1 rounded-full">{{ job.type }}</span>
       </div>
-      <p class="mb-4 text-sm text-gray-600">{{ job.description }}</p>
+      <p class="mb-4 text-sm text-gray-600">{{ job.description|linebreaksbr }}</p>
       <a href="{% url 'signup' %}" class="inline-block bg-red-700 hover:bg-red-800 text-white text-sm px-4 py-2 rounded-md transition">Apply Now</a>
     </div>
     {% empty %}
