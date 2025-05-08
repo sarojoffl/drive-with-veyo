@@ -3,6 +3,7 @@ from django.shortcuts import get_object_or_404
 from .models import Job, Blog, ContactMessage, TeamMember
 from .forms import ContactForm, UserForm
 from django.core.paginator import Paginator
+from django.conf import settings
 
 def index(request):
     blogs = Blog.objects.order_by('-created_at')[:3]
@@ -38,17 +39,22 @@ def blog_details(request, id):
     return render(request, 'main/blog_details.html', {'blog': blog, 'latest_blogs': latest_blogs})
 
 def contact(request):
+    context = {
+        'RECAPTCHA_PUBLIC_KEY': settings.RECAPTCHA_PUBLIC_KEY
+    }
+
     if request.method == 'POST':
         form = ContactForm(request.POST)
+        context['form'] = form
         if form.is_valid():
-            # Save the form data to the database
             form.save()
-            return render(request, 'main/contact.html', {'form': form, 'success': True})
+            context['success'] = True
         else:
-            return render(request, 'main/contact.html', {'form': form, 'error': True})
+            context['error'] = True
+        return render(request, 'main/contact.html', context)
     else:
-        form = ContactForm()
-    return render(request, 'main/contact.html', {'form': form})
+        context['form'] = ContactForm()
+        return render(request, 'main/contact.html', context)
 
 def signup(request):
     if request.method == 'POST':

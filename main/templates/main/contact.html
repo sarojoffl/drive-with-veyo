@@ -76,9 +76,14 @@
                 <label for="message" class="block text-sm font-medium text-gray-700 pb-1">Message</label>
                 <textarea id="message" name="message" rows="6" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none resize-none"></textarea>
               </div>
-              <div class="text-center">
-                <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition duration-300">Send Message</button>
-              </div>
+
+    <!-- Add reCAPTCHA widget here -->
+    <div class="g-recaptcha" data-sitekey="{{ RECAPTCHA_PUBLIC_KEY }}"></div>
+
+    <div class="text-center">
+        <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition duration-300">Send Message</button>
+    </div>
+
             </form>
           </div>
 
@@ -90,6 +95,9 @@
 {% endblock %}
 
 {% block extra_js %}
+  <!-- Google reCAPTCHA -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
   <!-- AOS -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
