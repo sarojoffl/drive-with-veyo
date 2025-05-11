@@ -12,42 +12,42 @@
 
     <div class="space-y-6">
       <div x-data="{ open: false }" class="border-b pb-4">
-        <button @click="open = !open" class="w-full flex justify-between items-center text-left text-base sm:text-lg font-medium text-gray-900" :aria-expanded="open.toString()" :aria-controls="'faq-return-policy'">
-          <span>What is your return policy?</span>
+        <button @click="open = !open" class="w-full flex justify-between items-center text-left text-base sm:text-lg font-medium text-gray-900" :aria-expanded="open.toString()" :aria-controls="'faq-about-company'">
+          <span>What does your company do?</span>
           <span class="text-xl font-bold text-gray-600" x-text="open ? '×' : '+'"></span>
         </button>
-        <div x-show="open" x-transition:enter="transition-all ease-in-out duration-300" x-transition:leave="transition-all ease-in-out duration-200" class="mt-2 text-sm sm:text-base text-gray-700" :id="'faq-return-policy'">
-          We offer a 30-day return policy on all items. Products must be in original condition for a full refund.
+        <div x-show="open" x-transition:enter="transition-all ease-in-out duration-300" x-transition:leave="transition-all ease-in-out duration-200" class="mt-2 text-sm sm:text-base text-gray-700" :id="'faq-about-company'">
+          We are a company dedicated to providing innovative solutions that simplify everyday tasks. Our focus is on quality and customer satisfaction.
         </div>
       </div>
 
       <div x-data="{ open: false }" class="border-b pb-4">
-        <button @click="open = !open" class="w-full flex justify-between items-center text-left text-base sm:text-lg font-medium text-gray-900" :aria-expanded="open.toString()" :aria-controls="'faq-international-shipping'">
-          <span>Do you offer international shipping?</span>
+        <button @click="open = !open" class="w-full flex justify-between items-center text-left text-base sm:text-lg font-medium text-gray-900" :aria-expanded="open.toString()" :aria-controls="'faq-contact'">
+          <span>How can I contact customer support?</span>
           <span class="text-xl font-bold text-gray-600" x-text="open ? '×' : '+'"></span>
         </button>
-        <div x-show="open" x-transition:enter="transition-all ease-in-out duration-300" x-transition:leave="transition-all ease-in-out duration-200" class="mt-2 text-sm sm:text-base text-gray-700" :id="'faq-international-shipping'">
-          Yes, we ship worldwide. Shipping charges vary based on destination and will be calculated at checkout.
+        <div x-show="open" x-transition:enter="transition-all ease-in-out duration-300" x-transition:leave="transition-all ease-in-out duration-200" class="mt-2 text-sm sm:text-base text-gray-700" :id="'faq-contact'">
+          You can reach our customer support team by email at support@company.com, or by phone at 1-800-123-4567.
         </div>
       </div>
 
       <div x-data="{ open: false }" class="border-b pb-4">
-        <button @click="open = !open" class="w-full flex justify-between items-center text-left text-base sm:text-lg font-medium text-gray-900" :aria-expanded="open.toString()" :aria-controls="'faq-track-order'">
-          <span>How can I track my order?</span>
+        <button @click="open = !open" class="w-full flex justify-between items-center text-left text-base sm:text-lg font-medium text-gray-900" :aria-expanded="open.toString()" :aria-controls="'faq-location'">
+          <span>Where are you located?</span>
           <span class="text-xl font-bold text-gray-600" x-text="open ? '×' : '+'"></span>
         </button>
-        <div x-show="open" x-transition:enter="transition-all ease-in-out duration-300" x-transition:leave="transition-all ease-in-out duration-200" class="mt-2 text-sm sm:text-base text-gray-700" :id="'faq-track-order'">
-          Once your order is shipped, you'll receive an email with the tracking number and a link to track it online.
+        <div x-show="open" x-transition:enter="transition-all ease-in-out duration-300" x-transition:leave="transition-all ease-in-out duration-200" class="mt-2 text-sm sm:text-base text-gray-700" :id="'faq-location'">
+          Our main office is located at 123 Business St, City, Country. However, we serve clients globally.
         </div>
       </div>
 
       <div x-data="{ open: false }" class="border-b pb-4">
-        <button @click="open = !open" class="w-full flex justify-between items-center text-left text-base sm:text-lg font-medium text-gray-900" :aria-expanded="open.toString()" :aria-controls="'faq-change-cancel-order'">
-          <span>Can I change or cancel my order?</span>
+        <button @click="open = !open" class="w-full flex justify-between items-center text-left text-base sm:text-lg font-medium text-gray-900" :aria-expanded="open.toString()" :aria-controls="'faq-services'">
+          <span>What services do you offer?</span>
           <span class="text-xl font-bold text-gray-600" x-text="open ? '×' : '+'"></span>
         </button>
-        <div x-show="open" x-transition:enter="transition-all ease-in-out duration-300" x-transition:leave="transition-all ease-in-out duration-200" class="mt-2 text-sm sm:text-base text-gray-700" :id="'faq-change-cancel-order'">
-          Orders can be modified or canceled within 2 hours of placing them. Contact our support for assistance.
+        <div x-show="open" x-transition:enter="transition-all ease-in-out duration-300" x-transition:leave="transition-all ease-in-out duration-200" class="mt-2 text-sm sm:text-base text-gray-700" :id="'faq-services'">
+          We provide a variety of services including consulting, product design, and project management to help businesses streamline operations.
         </div>
       </div>
     </div>

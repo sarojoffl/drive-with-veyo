@@ -10,10 +10,12 @@
     <div class="flex-1 bg-white shadow-md rounded-xl p-8">
       <h1 class="text-3xl font-bold text-gray-800 mb-4 truncate">{{ blog.title }}</h1>
       <p class="text-sm text-gray-500 mb-4">{{ blog.description }}</p>
+
       {% if blog.image %}
         <img src="{{ blog.image.url }}" class="w-full object-cover rounded-md mb-6" style="min-height: 20rem; height: auto;" alt="Blog Image" />
       {% endif %}
-      <p class="text-sm text-gray-500 mb-6">Published on {{ blog.created_at }} · by {{ blog.author }}</p>
+      
+      <p class="text-sm text-gray-500 mb-6">Published on {{ blog.created_at|date:"F j, Y" }} · by {{ blog.author }}</p>
 
       <div class="text-gray-700 leading-relaxed space-y-4">
         {{ blog.content|safe }}

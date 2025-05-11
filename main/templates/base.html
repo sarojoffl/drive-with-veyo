@@ -7,13 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{% block title %}Website{% endblock %}</title>
   <link rel="icon" type="image/x-icon" href="{% static 'main/assets/img/logo.png' %}">
-  
+
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Custom Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  
+
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
@@ -26,6 +26,7 @@
   <header class="py-5 bg-black sticky top-0 z-50 text-white shadow-md">
     <div class="flex justify-between items-center px-5 lg:px-20">
       <a href="{% url 'index' %}" class="text-2xl font-bold">Website</a>
+
       <nav class="hidden md:flex flex-wrap justify-center gap-x-6 text-sm font-medium" id="desktop-menu">
         <a href="{% url 'index' %}">Home</a>
         <a href="{% url 'about' %}">About</a>
@@ -35,13 +36,28 @@
         <a href="{% url 'blog' %}">Blog</a>
         <a href="{% url 'contact' %}">Contact</a>  
       </nav>
-      <a href="{% url 'signup' %}" class="bg-gradient-to-r from-purple-600 to-red-800 hover:from-red-700 hover:to-red-900 text-white font-semibold rounded-full text-sm py-2 px-5 shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300 ease-in-out">
-        Sign Up
-      </a>
+
+      <div class="flex items-center gap-3">
+        {% if user.is_authenticated %}
+          <span class="text-sm text-gray-300">Hi, {{ user.username }} 👋</span>
+          <a href="{% url 'logout' %}" class="bg-gradient-to-r from-purple-600 to-red-800 hover:from-red-700 hover:to-red-900 text-white font-semibold rounded-full text-sm py-2 px-5 shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300 ease-in-out">
+            Logout
+          </a>
+        {% else %}
+          <a href="{% url 'login' %}" class="bg-gradient-to-r from-purple-600 to-red-800 hover:from-red-700 hover:to-red-900 text-white font-semibold rounded-full text-sm py-2 px-5 shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300 ease-in-out">
+            Login
+          </a>
+          <a href="{% url 'signup' %}" class="bg-gradient-to-r from-purple-600 to-red-800 hover:from-red-700 hover:to-red-900 text-white font-semibold rounded-full text-sm py-2 px-5 shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300 ease-in-out">
+            Sign Up
+          </a>
+        {% endif %}
+      </div>
+
       <div class="md:hidden">
         <button id="mobile-menu-btn"><i class="bi bi-list text-2xl"></i></button>
       </div>
     </div>
+
     <div class="md:hidden hidden flex-col items-start gap-y-3 px-5 pt-3 pb-4 bg-red-800" id="mobile-menu">
       <a href="{% url 'index' %}" class="block text-sm">Home</a>
       <a href="{% url 'about' %}" class="block text-sm">About</a>
@@ -53,6 +69,7 @@
     </div>
   </header>
 
+  <!-- Content -->
   {% block content %}{% endblock %}
 
   <!-- Footer -->
@@ -77,13 +94,13 @@
         <h4 class="font-semibold mb-4">Contact Us</h4>
         <ul class="text-sm space-y-2">
           <li class="flex items-center space-x-2">
-            <i class="bi bi-geo-alt-fill text-black"></i><span>gwarko,112123</span>
+            <i class="bi bi-geo-alt-fill text-black"></i><span>Gwarko, Lalitpur, 112123</span>
           </li>
           <li class="flex items-center space-x-2">
-            <i class="bi bi-envelope-fill text-black"></i><span>info@gmail.com</span>
+            <i class="bi bi-envelope-fill text-black"></i><span>info@example.com</span>
           </li>
           <li class="flex items-center space-x-2">
-            <i class="bi bi-telephone-fill text-black"></i><span>9834567899</span>
+            <i class="bi bi-telephone-fill text-black"></i><span>+1234567890</span>
           </li>
         </ul>
       </div>
@@ -98,7 +115,7 @@
       </div>
     </div>
     <div class="text-center text-sm font-bold mt-10 border-t border-white/30 pt-4">
-      &copy; 2025 Kelly. All rights reserved.
+      &copy; 2025 Your Website Name. All rights reserved. | Gwarko, Lalitpur, 112123
     </div>
   </footer>
 

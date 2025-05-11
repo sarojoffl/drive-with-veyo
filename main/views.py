@@ -4,6 +4,8 @@ from .models import Job, Blog, ContactMessage, TeamMember
 from .forms import ContactForm, UserForm
 from django.core.paginator import Paginator
 from django.conf import settings
+from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth import logout as auth_logout
 
 def index(request):
     blogs = Blog.objects.order_by('-created_at')[:3]
@@ -26,8 +28,7 @@ def career(request):
 def blog(request):
     blogs = Blog.objects.all().order_by('-created_at')
 
-    # Set up pagination: 6 blogs per page
-    paginator = Paginator(blogs, 6)
+    paginator = Paginator(blogs, 3)  # Show 3 blogs per page
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
@@ -78,3 +79,22 @@ def signup(request):
 
 def signup_success(request):
     return render(request, 'main/signup_success.html')
+
+def login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            auth_login(request, user)
+            return redirect('index')
+        else:
+            return render(request, 'main/login.html', {'error': 'Invalid username or password.'})
+    else:
+        if request.user.is_authenticated:
+            return redirect('index')
+        return render(request, 'main/login.html')
+    
+def user_logout(request):
+    auth_logout(request)
+    return redirect('index')

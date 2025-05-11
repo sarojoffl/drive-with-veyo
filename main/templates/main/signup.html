@@ -1,102 +1,64 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Sign-Up{% endblock %}
+{% block title %}Sign Up{% endblock %}
 
 {% block content %}
-  <!-- Hero Section -->
-  <section class="relative h-[60vh] sm:h-[70vh] bg-cover bg-center bg-fixed"
-    style="background-image: url('{% static 'main/assets/img/drive.jpg' %}');">
-    <div class="absolute inset-0 bg-black bg-opacity-50 flex justify-center items-center px-4 text-center">
-      <div class="text-white">
-        <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-4">Drive with Veyo</h2>
-        <p class="text-sm sm:text-base max-w-2xl mx-auto mb-4">
-          At Veyo, we help get people to and from their medical appointments. We're looking to partner with quality
-          drivers in Arizona, Connecticut, Florida, Michigan, Missouri, Ohio, Texas, and Wisconsin.
-        </p>
-        <p class="text-sm sm:text-base max-w-2xl mx-auto">
-          The Veyo IDP program is now known as VeyoRide. More details will be coming soon! Nothing is changing in the
-          way you work with us.
-        </p>
+<!-- Sign-Up Section -->
+<section class="bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-4xl mx-auto bg-white p-6 sm:p-10 rounded-xl shadow-lg">
+    <h2 class="text-xl sm:text-2xl font-bold text-center text-blue-700 mb-6">Sign Up</h2>
+    <p class="text-center mb-6 text-sm text-gray-600">Create your account below!</p>
+
+    <form action="{% url 'signup' %}" method="POST" class="space-y-6">
+      {% csrf_token %}
+      <div class="flex flex-col sm:flex-row gap-4">
+        <div class="w-full">
+          <label for="first_name" class="block text-sm font-medium text-gray-700">First Name</label>
+          <input type="text" id="first_name" name="first_name" required
+            class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        </div>
+        <div class="w-full">
+          <label for="last_name" class="block text-sm font-medium text-gray-700">Last Name</label>
+          <input type="text" id="last_name" name="last_name" required
+            class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Sign-Up Section -->
-  <section class="bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-4xl mx-auto bg-white p-6 sm:p-10 rounded-xl shadow-lg">
-      <h2 class="text-xl sm:text-2xl font-bold text-center text-blue-700 mb-6">Sign Up Here</h2>
-      <p class="text-center mb-6 text-sm text-gray-600">Ready to drive? Sign up below!</p>
+      <div>
+        <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+        <input type="text" id="username" name="username" required
+          class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      </div>
 
-      <form action="{% url 'signup' %}" method="POST" class="space-y-6">
-        {% csrf_token %}
-        <div class="flex flex-col sm:flex-row gap-4">
-          <div class="w-full">
-            <label for="first_name" class="block text-sm font-medium text-gray-700">First Name</label>
-            <input type="text" id="first_name" name="first_name" required
-              class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          </div>
-          <div class="w-full">
-            <label for="last_name" class="block text-sm font-medium text-gray-700">Last Name</label>
-            <input type="text" id="last_name" name="last_name" required
-              class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          </div>
-        </div>
+      <div>
+        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+        <input type="email" id="email" name="email" required
+          class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      </div>
 
-        <div>
-          <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
-          <input type="text" id="username" name="username" required
-            class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-        </div>
+      <div>
+        <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+        <input type="tel" id="phone" name="phone" required
+          class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      </div>
 
-        <div>
-          <label for="email" class="block text-sm font-medium text-gray-700">Your Email</label>
-          <input type="email" id="email" name="email" required
-            class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-        </div>
+      <div>
+        <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+        <input type="password" id="password" name="password" required
+          class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      </div>
 
-        <div>
-          <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
-          <input type="tel" id="phone" name="phone" required
-            class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-        </div>
+      <button type="submit"
+        class="w-full bg-blue-700 hover:bg-blue-800 text-white font-semibold py-3 rounded-lg transition-all duration-300">
+        Create Account
+      </button>
+    </form>
 
-        <div>
-          <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-          <input type="password" id="password" name="password" required
-            class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-        </div>
-
-        <div>
-          <label for="zip_code" class="block text-sm font-medium text-gray-700">ZIP Code To Drive In</label>
-          <input type="text" id="zip_code" name="zip_code" required
-            class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-        </div>
-
-        <div>
-          <label for="referral_code" class="block text-sm font-medium text-gray-700">Referral Code (Optional)</label>
-          <input type="text" id="referral_code" name="referral_code"
-            class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-        </div>
-
-        <div class="flex items-start gap-2">
-          <input type="checkbox" id="terms" name="terms" required class="mt-1 h-4 w-4 text-blue-500" />
-          <label for="terms" class="text-xs text-gray-600 leading-snug">
-            By submission of this form, I attest that the information contained in this form is accurate and complete.
-            By clicking “Create Profile”, I agree to Veyo’s
-            <a href="#" class="text-blue-600 underline">Terms of Use</a>.
-          </label>
-        </div>
-
-        <button type="submit"
-          class="w-full bg-blue-700 hover:bg-blue-800 text-white font-semibold py-3 rounded-lg transition-all duration-300">
-          Create Profile
-        </button>
-      </form>
-
-      <p class="text-center mt-6 text-xs text-gray-500">
-        Signing up with a promo code? <a href="#" class="text-blue-600">Find out about our latest promotions</a>.
-      </p>
-    </div>
-  </section>
+    <p class="text-center mt-6 text-sm text-gray-600">
+      Already have an account?
+      <a href="{% url 'login' %}" class="text-blue-600 hover:underline font-medium">Log in here</a>.
+    </p>
+  </div>
+</section>
 {% endblock %}
